@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加产品信息</title>
+    <link rel="stylesheet" href="../css/index1.css">
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+    <div id="product">
+        <form>
+            <div>
+                <select name="category" id="category">
+                    <option value="主营产品推荐">主营产品推荐</option>
+                    <option value="定制化产品">定制化产品</option>
+                    <option value="标准化产品">标准化产品</option>
+                </select>
+            </div>
+            <div>
+                <span>标题：</span>
+                <input class="input_text" type="text" placeholder="请输入标题" id="title">
+            </div>
+            <div>
+                <span>产品型号：</span>
+                <input class="input_text" type="text" placeholder="请输入产品型号" id="setitle">
+            </div>
+            <div>
+                <span>图片：</span>
+                <form enctype="multipart/form-data" method="post" id="form">
+                    <input type="file" class="input_file" name="file" id="img">
+                    <!--<input type="submit" class="label_file" value="确认上传">-->
+                </form>
+            </div>
+            <h3>正文内容</h3>
+            <iframe src="../ueditor/index.html" width="1100px" height="400px" frameborder="0" id="pro"></iframe>
+
+            <input type="button" class="input_sub" value="提交" id="sub">
+        </form>
+
+    </div>
+<script>
+    function imgUpload() {
+        let formData = new FormData();
+        formData.append('file', $(".input_file")[0].files[0])
+        $.ajax({
+            url: "/item/add/upload",
+            method: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            async: false,
+            success: function (resp) {
+                console.log("success!!")
+            }
+        })
+    }
+    $(function(){
+        $("#sub").click(function(){
+            imgUpload();
+            var pro = $("#pro")[0].contentWindow;
+            var content = pro.getContent();
+            $.ajax({
+                url:"/item/add/selectBy",
+                method:"post",
+                data:{
+                    "category": $("#category option:selected").val(),
+                    "title": $("#title").val(),
+                    "setitle": $("#setitle").val(),
+                    "content": content,
+                },
+                success:function (resp){
+                    location.href="/item/pages/productCenter.html";
+                }
+            })
+            })
+        })
+
+</script>
+</body>
+</html>

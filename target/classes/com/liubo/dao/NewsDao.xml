@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liubo.dao.NewsDao">
+    <!--添加-->
+    <insert id="newsAdd" parameterType="com.liubo.domain.News">
+        insert into t_news(id,title,content,img,time)values(#{id},#{title},#{content},#{img},#{time})
+    </insert>
+    <select id="newsGetCount" resultType="int">
+        select count(*) from t_news
+    </select>
+    <select id="newsGetPageData" resultType="com.liubo.domain.News">
+        select *from t_news limit #{index} , 4
+    </select>
+    <select id="findAllNews" resultType="com.liubo.domain.News">
+        select *from t_news
+    </select>
+    <select id="newsFindById" resultType="com.liubo.domain.News">
+        select *from t_news where id=#{id}
+    </select>
+    <delete id="newsDel" parameterType="int">
+        delete from t_news where id=#{id}
+    </delete>
+
+    <insert id="hoAdd" parameterType="com.liubo.domain.Honor">
+        insert into t_honor(id,title,content,img,time)values(#{id},#{title},#{content},#{img},#{time})
+    </insert>
+    <select id="hoGetCount" resultType="int">
+        select count(*) from t_honor
+    </select>
+    <select id="hoGetPageData" resultType="com.liubo.domain.Honor">
+        select *from t_honor limit #{index} , 4
+    </select>
+    <select id="findAllHonor" resultType="com.liubo.domain.Honor">
+        select *from t_honor
+    </select>
+    <select id="hoFindById" resultType="com.liubo.domain.Honor">
+        select *from t_honor where id=#{id}
+    </select>
+    <delete id="hoDel" parameterType="int">
+        delete from t_honor where id=#{id}
+    </delete>
+
+    <insert id="dyAdd" parameterType="com.liubo.domain.Dyn">
+        insert into t_dyn(id,title,content,img,time)values(#{id},#{title},#{content},#{img},#{time})
+    </insert>
+    <select id="dyGetCount" resultType="int">
+        select count(*) from t_dyn
+    </select>
+    <select id="dyGetPageData" resultType="com.liubo.domain.Dyn">
+        select *from t_dyn limit #{index} , 4
+    </select>
+    <select id="findAllDyn" resultType="com.liubo.domain.Dyn">
+        select *from t_dyn
+    </select>
+    <select id="dyFindById" resultType="com.liubo.domain.Dyn">
+        select *from t_dyn where id=#{id}
+    </select>
+    <delete id="dyDel" parameterType="int">
+        delete from t_dyn where id=#{id}
+    </delete>
+</mapper>

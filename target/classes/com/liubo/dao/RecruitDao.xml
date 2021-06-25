@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liubo.dao.RecruitDao">
+    <!--添加-->
+    <insert id="manAdd" parameterType="com.liubo.domain.Manage">
+        insert into t_manage(id,title,content,time,img)values(#{id},#{title},#{content},#{time},#{img})
+    </insert>
+    <select id="manGetCount" resultType="int">
+        select count(*) from t_manage
+    </select>
+    <select id="manGetPageData" resultType="com.liubo.domain.Manage">
+        select *from t_manage limit #{index} , 2
+    </select>
+    <select id="findAllMan" resultType="com.liubo.domain.Manage">
+        select *from t_manage
+    </select>
+    <select id="manFindById" resultType="com.liubo.domain.Manage">
+        select *from t_manage where id=#{id}
+    </select>
+    <delete id="manDel" parameterType="int">
+        delete from t_manage where id=#{id}
+    </delete>
+
+    <!--添加-->
+    <insert id="marAdd" parameterType="com.liubo.domain.Market">
+        insert into t_market(id,title,content,time,img)values(#{id},#{title},#{content},#{time},#{img})
+    </insert>
+    <select id="marGetCount" resultType="int">
+        select count(*) from t_market
+    </select>
+    <select id="marGetPageData" resultType="com.liubo.domain.Market">
+        select *from t_market limit #{index} , 2
+    </select>
+    <select id="findAllMar" resultType="com.liubo.domain.Market">
+        select *from t_market
+    </select>
+    <select id="marFindById" resultType="com.liubo.domain.Market">
+        select *from t_market where id=#{id}
+    </select>
+    <delete id="marDel" parameterType="int">
+        delete from t_market where id=#{id}
+    </delete>
+
+    <!--添加-->
+    <insert id="devAdd" parameterType="com.liubo.domain.Dev">
+        insert into t_dev(id,title,content,time,img)values(#{id},#{title},#{content},#{time},#{img})
+    </insert>
+    <select id="devGetCount" resultType="int">
+        select count(*) from t_dev
+    </select>
+    <select id="devGetPageData" resultType="com.liubo.domain.Dev">
+        select *from t_dev limit #{index} , 2
+    </select>
+    <select id="findAllDev" resultType="com.liubo.domain.Dev">
+        select *from t_dev
+    </select>
+    <select id="devFindById" resultType="com.liubo.domain.Dev">
+        select *from t_dev where id=#{id}
+    </select>
+    <delete id="devDel" parameterType="int">
+        delete from t_dev where id=#{id}
+    </delete>
+</mapper>

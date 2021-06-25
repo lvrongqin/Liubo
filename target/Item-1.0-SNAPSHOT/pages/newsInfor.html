@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加消息信息</title>
+    <link rel="stylesheet" href="../css/index1.css">
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+<div id="product">
+    <form action="">
+        <div>
+            <select name="category" id="category">
+                <option value="企业新闻">企业新闻</option>
+                <option value="企业荣誉">企业荣誉</option>
+                <option value="行业动态">行业动态</option>
+            </select>
+        </div>
+        <div>
+            <span>标题：</span>
+            <input class="input_text" type="text" placeholder="请输入标题" id="title">
+        </div>
+        <div>
+            <span>图片：</span>
+            <form enctype="multipart/form-data" method="post" id="form">
+                <input type="file" class="input_file" name="file" id="img">
+            </form>
+        </div>
+        <h3>正文内容</h3>
+        <iframe src="../ueditor/index.html" width="1100px" height="400px" frameborder="0" id="n"></iframe>
+        <input type="button" class="input_sub" value="提交" id="sub">
+    </form>
+</div>
+<script>
+    function imgUpload() {
+        let formData = new FormData();
+        formData.append('file', $(".input_file")[0].files[0])
+        $.ajax({
+            url: "/item/add/upload",
+            method: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            async: false,
+            success: function (resp) {
+                console.log("success!!")
+            }
+        })
+    }
+    $(function() {
+        $("#sub").click(function () {
+            imgUpload();
+            var n = $("#n")[0].contentWindow;
+            var content = n.getContent();
+            $.ajax({
+                url: "/item/add/selectBy",
+                method: "post",
+                data: {
+                    "category": $("#category option:selected").val(),
+                    "title": $("#title").val(),
+                    "content": content,
+                },
+                success: function (resp) {
+                    location.href = "newsCenter.html";
+                }
+            })
+
+        })
+    })
+</script>
+</body>
+</html>

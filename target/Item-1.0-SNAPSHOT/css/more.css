@@ -1,0 +1,17 @@
+/* 加载更多 */
+.more a{
+    display: block;
+    margin: 0 auto;
+    padding: 10px 0;
+    text-align: center;
+    color: #0054AA;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background-color: #fff;
+    box-shadow: 0 0 0.9em 0.1em rgba(0, 0, 0, 0.12);
+}
+.more a:hover{
+    color: #fff;
+    background-color: #0054AA;
+    transition: all 1s;
+}

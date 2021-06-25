@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liubo.dao.ProductDao">
+    <!--添加-->
+    <insert id="reAdd" parameterType="com.liubo.domain.Recommend">
+        insert into t_recommend(id,title,setitle,img,content)values(#{id},#{title},#{setitle},#{img},#{content})
+    </insert>
+    <select id="reGetCount" resultType="int">
+        select count(*) from t_recommend
+    </select>
+    <select id="reGetPageData" resultType="com.liubo.domain.Recommend">
+        select *from t_recommend limit #{index} , 8
+    </select>
+    <select id="findAllRecommend" resultType="com.liubo.domain.Recommend">
+        select *from t_recommend
+    </select>
+    <select id="reFindById" resultType="com.liubo.domain.Recommend">
+        select *from t_recommend where id=#{id}
+    </select>
+    <delete id="reDelete" parameterType="int">
+        delete from t_recommend where id=#{id}
+    </delete>
+
+    <insert id="orAdd" parameterType="com.liubo.domain.Order">
+        insert into t_order(id,title,setitle,img,content)values(#{id},#{title},#{setitle},#{img},#{content})
+    </insert>
+    <select id="orGetCount" resultType="int">
+        select count(*) from t_order
+    </select>
+    <select id="orGetPageData" resultType="com.liubo.domain.Order">
+        select *from t_order limit #{index} , 8
+    </select>
+    <select id="findAllOrder" resultType="com.liubo.domain.Order">
+        select *from t_order
+    </select>
+    <select id="orFindById" resultType="com.liubo.domain.Order">
+        select *from t_order where id=#{id}
+    </select>
+    <delete id="orDelete" parameterType="int">
+        delete from t_order where id=#{id}
+    </delete>
+
+    <insert id="stAdd" parameterType="com.liubo.domain.Standard">
+        insert into t_standard(id,title,setitle,img,content)values(#{id},#{title},#{setitle},#{img},#{content})
+    </insert>
+    <select id="stGetCount" resultType="int">
+        select count(*) from t_standard
+    </select>
+    <select id="stGetPageData" resultType="com.liubo.domain.Standard">
+        select *from t_standard limit #{index} , 8
+    </select>
+    <select id="findAllStandard" resultType="com.liubo.domain.Standard">
+        select *from t_standard
+    </select>
+    <select id="stFindById" resultType="com.liubo.domain.Standard">
+        select *from t_standard where id=#{id}
+    </select>
+    <delete id="stDelete" parameterType="int">
+        delete from t_standard where id=#{id}
+    </delete>
+
+</mapper>

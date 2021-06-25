@@ -1,0 +1,26 @@
+.right{
+    margin: 0 auto;
+    color: #818181;
+}
+.right>p:nth-of-type(2){
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+.rig_main p{
+    text-indent: 2em;
+    font-size: 17px;
+    line-height: 30px;
+}
+.title1{
+    font-size: 18px !important;
+    margin: 50px 0 20px 0;
+    font-weight: 600;
+    color: #000;
+}
+.title2{
+    font-size: 15px !important;
+    margin-top: 30px;
+    font-weight: 600;
+    color: #000;
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liubo.dao.TryDao">
+    <select id="findAllRecommend" resultType="com.liubo.domain.Recommend">
+        select* from t_recommend
+    </select>
+    <select id="findAllNews" resultType="com.liubo.domain.News">
+        select* from t_news
+    </select>
+    <select id="findAllOrder" resultType="com.liubo.domain.Order">
+        select* from t_order
+    </select>
+    <select id="findAllStandard" resultType="com.liubo.domain.Standard">
+        select* from t_standard
+    </select>
+    <select id="findAllHonor" resultType="com.liubo.domain.Honor">
+        select* from t_honor
+    </select>
+    <select id="findAllDyn" resultType="com.liubo.domain.Dyn">
+        select* from t_dyn
+    </select>
+    <select id="findAllMarket" resultType="com.liubo.domain.Market">
+        select* from t_market
+    </select>
+    <select id="findAllDev" resultType="com.liubo.domain.Dev">
+        select* from t_dev
+    </select>
+    <select id="findAllManage" resultType="com.liubo.domain.Manage">
+        select* from t_manage
+    </select>
+    <select id="findAllService" resultType="com.liubo.domain.Serv">
+        select* from t_service
+    </select>
+    <select id="findAllMessage" resultType="com.liubo.domain.Message">
+        select* from t_message
+    </select>
+</mapper>

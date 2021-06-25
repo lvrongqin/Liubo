@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liubo.dao.ServiceDao">
+    <insert id="seAdd" parameterType="com.liubo.domain.Serv">
+        insert into t_service(id,title,time,content) values(#{id},#{title},#{time},#{content})
+    </insert>
+    <select id="findAllService" resultType="com.liubo.domain.Serv">
+        select* from t_service
+    </select>
+    <select id="findByIdService" parameterType="int" resultType="com.liubo.domain.Serv">
+        select *from t_service where id=#{id}
+    </select>
+    <select id="seGetCount" resultType="int">
+        select count(*) from t_service
+    </select>
+    <select id="seGetPageData" resultType="com.liubo.domain.Serv">
+        select *from t_service limit #{index} , 3
+    </select>
+    <insert id="mesAdd" parameterType="com.liubo.domain.Message">
+        insert into t_message(id,name,phone,company,email,subject,content)values(#{id},#{name},#{phone},#{company},#{email},#{subject},#{content})
+    </insert>
+    <delete id="seDel" parameterType="int">
+        delete from t_service where id=#{id}
+    </delete>
+    <delete id="mesDel" parameterType="int">
+        delete from t_message where id=#{id}
+    </delete>
+</mapper>
